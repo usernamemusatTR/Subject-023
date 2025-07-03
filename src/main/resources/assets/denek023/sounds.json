@@ -1,0 +1,142 @@
+{
+  "jumpscare": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "denek023:jumpscare",
+        "stream": false
+      }
+    ]
+  },
+  "comehere": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "denek023:comehere",
+        "stream": false
+      }
+    ]
+  },
+  "helpme": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "denek023:helpme",
+        "stream": false
+      }
+    ]
+  },
+  "sshhh": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "denek023:sshhh",
+        "stream": false
+      }
+    ]
+  },
+  "behindyou": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "denek023:behindyou",
+        "stream": false
+      }
+    ]
+  },
+  "chase": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "denek023:chase",
+        "stream": false
+      }
+    ]
+  },
+  "run": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "denek023:run",
+        "stream": false
+      }
+    ]
+  },
+  "discarded": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "denek023:discarded",
+        "stream": false
+      }
+    ]
+  },
+  "scream": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "denek023:scream",
+        "stream": false
+      }
+    ]
+  },
+  "cave_ambient": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "denek023:cave1",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave2",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave3",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave4",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave5",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave6",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave7",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave8",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave9",
+        "stream": false
+      }
+    ]
+  },
+  "breathleft": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "denek023:breathleft",
+        "stream": false
+      }
+    ]
+  },
+  "breathright": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "denek023:breathright",
+        "stream": false
+      }
+    ]
+  }
+}
