@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="denek023"
+version="1.0"
+displayName="Subject-023"
+logoFile="logo.png"
+credits="usernamemusatTR"
+description="You're never alone. Denek023 is always watching."
+
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
+[[dependencies.denek023]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1]"
+    ordering="AFTER"
+    side="BOTH"
+
+
+
+
+# Start of user code block dependencies configuration
+# End of user code block dependencies configuration
