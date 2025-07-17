@@ -30,4 +30,5 @@ public class ModEntityTypes {
             () -> EntityType.Builder.of(Denek023BehindYouEntity::new, MobCategory.MONSTER)
                 .sized(0.6F, 1.95F)
                 .build("denek023:denek023_behind_you"));
+
 }

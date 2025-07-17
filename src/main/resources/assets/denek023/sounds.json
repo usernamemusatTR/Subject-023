@@ -138,5 +138,23 @@
         "stream": false
       }
     ]
+  },
+  "fakewalk": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "denek023:fakewalk",
+        "stream": false
+      }
+    ]
+  },
+  "heartbeat": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "denek023:heartbeat",
+        "stream": false
+      }
+    ]
   }
 }

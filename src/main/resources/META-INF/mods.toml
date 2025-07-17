@@ -4,11 +4,11 @@ license="MIT"
 
 [[mods]]
 modId="denek023"
-version="1.0"
+version="1.1"
 displayName="Subject-023"
 logoFile="logo.png"
 credits="usernamemusatTR"
-description="You're never alone. Denek023 is always watching."
+description="You're never alone. Subject-023 is always watching."
 
 # Start of user code block mod configuration
 # End of user code block mod configuration

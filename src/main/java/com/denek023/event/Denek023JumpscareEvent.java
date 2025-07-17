@@ -24,9 +24,7 @@ import java.util.Random;
 @Mod.EventBusSubscriber(modid = Denek023.MODID)
 public class Denek023JumpscareEvent {
     private static Denek023AttackerEntity attacker = null;
-    private static long lastSpawnAttempt = 0;
-    private static final long SPAWN_COOLDOWN = 800;
-    private static final double SPAWN_CHANCE = 0.20;
+    private static final double SPAWN_CHANCE_PER_TICK = 1.0 / 4800.0;
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -36,7 +34,6 @@ public class Denek023JumpscareEvent {
 
         Player player = event.player;
         Level level = player.level();
-        long currentTime = player.tickCount;
 
         if (player.getY() > -15 || player.getY() < -65) {
             if (attacker != null) {
@@ -46,15 +43,8 @@ public class Denek023JumpscareEvent {
             return;
         }
 
-        if (attacker == null || !attacker.isAlive()) {
-            attacker = null;
-            if (currentTime - lastSpawnAttempt > SPAWN_COOLDOWN) {
-                lastSpawnAttempt = currentTime;
-                if (level.random.nextDouble() < SPAWN_CHANCE) {
-                    spawnAttacker(player, level);
-                }
-            }
-        } else {
+
+        if (attacker != null && attacker.isAlive()) {
             if (!attacker.getPersistentData().getBoolean("chaseStarted")) {
                 Vec3 look = player.getLookAngle().normalize();
                 Vec3 diff = attacker.position().subtract(player.position()).normalize();
@@ -68,6 +58,11 @@ public class Denek023JumpscareEvent {
                     level.playSound(null, player.blockPosition(), ModSounds.SCREAM.get(), SoundSource.HOSTILE, 5.0f, 1.0f);
                     MinecraftForge.EVENT_BUS.post(new ChaseMusicEvent(true));
                 }
+            }
+        } else {
+            attacker = null;
+            if (level.random.nextDouble() < SPAWN_CHANCE_PER_TICK) {
+                spawnAttacker(player, level);
             }
         }
     }
@@ -112,15 +107,4 @@ public class Denek023JumpscareEvent {
         return null;
     }
 
-    private static boolean playerCanSee(Denek023AttackerEntity attacker) {
-        if (attacker == null || attacker.level() == null) return false;
-        Player player = null;
-        Object nearest = attacker.level().getNearestPlayer(attacker, 64);
-        if (nearest instanceof Player) {
-            player = (Player) nearest;
-        } else {
-            return false;
-        }
-        return player.hasLineOfSight(attacker);
-    }
 }

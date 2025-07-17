@@ -44,7 +44,7 @@ public class ChaseAndAttackPlayerGoal extends Goal {
             mob.getLookControl().setLookAt(target, 60.0F, 60.0F);
             double distance = mob.distanceTo(target);
             mob.getNavigation().moveTo(target, 1.2D);
-            if (distance <= 1.0D) {
+            if (distance <= 2.0D) {
                 if (mob.doHurtTarget(target)) {
                     if (!mob.getPersistentData().getBoolean("jumpscareDone")) {
                         mob.level().playSound(null, mob.blockPosition(), ModSounds.JUMPSCARE.get(), SoundSource.HOSTILE, 4.0F, 1.0F);

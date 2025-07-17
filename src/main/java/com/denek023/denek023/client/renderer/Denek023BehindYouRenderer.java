@@ -12,24 +12,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.MultiBufferSource;
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class Denek023BehindYouRenderer extends MobRenderer<Denek023BehindYouEntity, Denek023<Denek023BehindYouEntity>> {
-        private static final ResourceLocation TEXTURE = new ResourceLocation("denek023", "textures/entity/denek023.png");
-    private static final ResourceLocation EMISSIVE = new ResourceLocation("denek023", "textures/entity/denek023_eyes.png");
+public class Denek023BehindYouRenderer extends Denek023Renderer<Denek023BehindYouEntity> {
 
     public Denek023BehindYouRenderer(EntityRendererProvider.Context context) {
-        super(context, new Denek023<>(context.bakeLayer(Denek023.LAYER_LOCATION)), 0.5f);
-        this.addLayer(new RenderLayer<>(this) {
-            @Override
-            public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Denek023BehindYouEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-                RenderType renderType = RenderType.eyes(EMISSIVE);
-                getParentModel().renderToBuffer(poseStack, buffer.getBuffer(renderType), 0xF000F0, net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
-            }
-        });
-
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(Denek023BehindYouEntity entity) {
-        return TEXTURE;
+        super(context);
     }
 }

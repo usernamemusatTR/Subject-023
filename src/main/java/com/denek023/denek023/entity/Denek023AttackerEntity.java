@@ -20,13 +20,12 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 
-public class Denek023AttackerEntity extends net.minecraft.world.entity.PathfinderMob {
+public class Denek023AttackerEntity extends Denek023Entity {
     public int chaseTicks = 0;
     public int waitForChaseTicks = 0;
 
-    public Denek023AttackerEntity(EntityType<? extends net.minecraft.world.entity.PathfinderMob> type, Level world) {
-        super(type, world);
-        this.waitForChaseTicks = 0;
+    public Denek023AttackerEntity(EntityType<? extends Denek023Entity> type, Level level) {
+        super(type, level);
     }
 
     @Override

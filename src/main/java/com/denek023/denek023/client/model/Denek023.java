@@ -14,11 +14,11 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
+import com.denek023.denek023.entity.Denek023Entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-public class Denek023<T extends Entity> extends EntityModel<T> {
+public class Denek023<T extends Denek023Entity> extends EntityModel<T> {
     public static final String MODID = "denek023";
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("denek023", "denek023"), "main");
     private final ModelPart Head;

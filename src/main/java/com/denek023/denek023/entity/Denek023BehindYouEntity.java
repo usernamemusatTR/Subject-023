@@ -15,11 +15,11 @@ import net.minecraft.world.level.ClipContext;
 
 import java.util.List;
 
-public class Denek023BehindYouEntity extends Mob {
+public class Denek023BehindYouEntity extends Denek023Entity {
     private int lifetime = 0;
 
-    public Denek023BehindYouEntity(EntityType<? extends Mob> type, Level world) {
-        super(type, world);
+    public Denek023BehindYouEntity(EntityType<? extends Denek023Entity> type, Level level) {
+        super(type, level);
     }
 
     @Override

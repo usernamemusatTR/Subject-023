@@ -24,10 +24,10 @@ import net.minecraft.core.BlockPos;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class Denek023WatcherEntity extends Mob {
+public class Denek023WatcherEntity extends Denek023Entity {
     private int lifetime = 0;
 
-    public Denek023WatcherEntity(EntityType<? extends Denek023WatcherEntity> type, Level level) {
+    public Denek023WatcherEntity(EntityType<? extends Denek023Entity> type, Level level) {
         super(type, level);
     }
 
