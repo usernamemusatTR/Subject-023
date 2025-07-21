@@ -9,8 +9,8 @@ import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = "denek023", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SettingsChanger {
-    private static final int TICK_COOLDOWN = 2000;
-    private static final double SPAWN_CHANCE = 0.30;
+    private static final int TICK_COOLDOWN = 3000;
+    private static final double SPAWN_CHANCE = 0.20;
     private static int tickCounter = 0;
     private static final Random random = new Random();
 

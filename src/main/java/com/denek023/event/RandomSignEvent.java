@@ -38,7 +38,7 @@ public class RandomSignEvent {
         "He is near"
     };
     
-    private static final int COOLDOWN_TICKS = 3000;
+    private static final int COOLDOWN_TICKS = 5000;
     private static final int MAX_LINE_LENGTH = 15;
     private static final int MAX_DISTANCE = 2;
     private static final double SPAWN_CHANCE = 0.001;
