@@ -1,7 +1,8 @@
 package com.denek023.denek023.client;
 
 import com.denek023.denek023.ModSounds;
-import com.denek023.denek023.event.ChaseMusicEvent;
+import com.denek023.event.ChaseMusicEvent;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.util.RandomSource;
@@ -20,8 +21,6 @@ public class Denek023ClientEvents {
         if (mc.level == null || mc.player == null) return;
 
         if (event.play) {
-            // Eğer instance null ise veya ses yöneticisi bu sesi çalmıyorsa, yeni bir tane başlat.
-            // isActive metodu, sesin o anda çalınıp çalınmadığını kontrol eder.
             if (chaseInstance == null || !mc.getSoundManager().isActive(chaseInstance)) {
                 chaseInstance = new SimpleSoundInstance(
                     ModSounds.CHASE.get().getLocation(),

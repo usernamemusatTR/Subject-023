@@ -56,7 +56,7 @@ public class ChaseAndAttackPlayerGoal extends Goal {
                             );
                         }
                         mob.getPersistentData().putBoolean("jumpscareDone", true);
-                        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.denek023.denek023.event.ChaseMusicEvent(false));
+                        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.denek023.event.ChaseMusicEvent(false));
                         mob.discard();
                     }
                 }

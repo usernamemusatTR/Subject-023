@@ -50,8 +50,6 @@ public class Denek023BehindYouHandler {
                     behind.setPos(spawnX, spawnY, spawnZ);
                     player.level().addFreshEntity(behind);
 
-                    System.out.println("Denek023BehindYouEntity spawned at: " + spawnX + ", " + spawnY + ", " + spawnZ);
-
                     Random rand = new Random();
                     int soundChance = rand.nextInt(4);
 

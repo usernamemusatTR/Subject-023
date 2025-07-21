@@ -4,7 +4,7 @@ import com.denek023.denek023.entity.Denek023AttackerEntity;
 import com.denek023.denek023.Denek023;
 import com.denek023.denek023.ModSounds;
 import com.denek023.denek023.init.ModEntityTypes;
-import com.denek023.denek023.event.ChaseMusicEvent;
+
 import net.minecraftforge.common.MinecraftForge;
 
 import net.minecraft.core.BlockPos;
@@ -35,7 +35,7 @@ public class Denek023JumpscareEvent {
         Player player = event.player;
         Level level = player.level();
 
-        if (player.getY() > -15 || player.getY() < -65) {
+        if (player.getY() > 0 || player.getY() < -55) {
             if (attacker != null) {
                 attacker.discard();
                 attacker = null;

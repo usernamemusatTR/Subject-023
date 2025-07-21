@@ -29,7 +29,9 @@ public class ModSounds {
         SOUND_EVENTS.register("breathright", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "breathright")));
     public static final RegistryObject<SoundEvent> FAKEWALK =
             SOUND_EVENTS.register("fakewalk", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "fakewalk")));
-        public static final RegistryObject<SoundEvent> HEARTBEAT =
+    public static final RegistryObject<SoundEvent> CREEPER_TSS =
+            SOUND_EVENTS.register("creeper_tss", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "creeper_tss")));
+    public static final RegistryObject<SoundEvent> HEARTBEAT =
             SOUND_EVENTS.register("heartbeat", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "heartbeat")));
     
         public static void register(IEventBus modEventBus) {

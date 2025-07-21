@@ -11,11 +11,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.core.BlockPos;
 import com.denek023.denek023.Denek023;
+import java.util.HashMap;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = Denek023.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WatcherSpawnHandler {
-    private static final int TICK_INTERVAL = 800; // 40 saniye
+    private static final int TICK_COOLDOWN = 800;
     private static final double SPAWN_CHANCE = 0.20;
+    private static final HashMap<UUID, Integer> cooldowns = new HashMap<>();
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -26,22 +29,25 @@ public class WatcherSpawnHandler {
         Player player = event.player;
         Level level = player.level();
 
-        if (player.tickCount > 0 && player.tickCount % TICK_INTERVAL == 0) {
-            if (level.random.nextDouble() < SPAWN_CHANCE) {
-                // Oyuncunun 128 blok çevresinde başka watcher var mı diye kontrol et
-                boolean watcherNearby = !level.getEntitiesOfClass(Denek023WatcherEntity.class, player.getBoundingBox().inflate(128.0)).isEmpty();
-                if (watcherNearby) {
-                    return;
-                }
-
-                trySpawnWatcher(level, player);
+        UUID playerUUID = player.getUUID();
+        int cooldown = cooldowns.getOrDefault(playerUUID, 0);
+        if (cooldown > 0) {
+            cooldowns.put(playerUUID, cooldown - 1);
+            return;
+        }
+        if (player.tickCount > 0 && player.tickCount % TICK_COOLDOWN == 0 && level.random.nextDouble() < SPAWN_CHANCE) {
+            boolean watcherNearby = !level.getEntitiesOfClass(Denek023WatcherEntity.class, player.getBoundingBox().inflate(128.0)).isEmpty();
+            if (watcherNearby) {
+                return;
             }
+            trySpawnWatcher(level, player);
+            cooldowns.put(playerUUID, TICK_COOLDOWN);
         }
     }
 
     private static void trySpawnWatcher(Level level, Player player) {
         double minDist = 15.0;
-        double maxDist = 60.0;
+        double maxDist = 50.0;
         double angle = level.random.nextDouble() * 2 * Math.PI;
         double distance = minDist + level.random.nextDouble() * (maxDist - minDist);
 
@@ -50,14 +56,12 @@ public class WatcherSpawnHandler {
         
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(spawnX, player.getY() + 5, spawnZ);
 
-        // Yere doğru güvenli bir yer bul
         while (pos.getY() > level.getMinBuildHeight() && !level.getBlockState(pos.below()).isSolidRender(level, pos.below())) {
             pos.move(0, -1, 0);
         }
 
-        // Hava boşluğu kontrolü
         if (!level.isEmptyBlock(pos) || !level.isEmptyBlock(pos.above())) {
-            return; // Güvenli değil
+            return; 
         }
 
         Denek023WatcherEntity watcher = ModEntityTypes.DENEK023_WATCHER.get().create(level);

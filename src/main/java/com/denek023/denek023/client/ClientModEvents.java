@@ -4,6 +4,7 @@ import com.denek023.denek023.client.model.Denek023;
 import com.denek023.denek023.client.renderer.Denek023AttackerRenderer;
 import com.denek023.denek023.client.renderer.Denek023WatcherRenderer;
 import com.denek023.denek023.client.renderer.Denek023BehindYouRenderer;
+import com.denek023.denek023.client.renderer.Denek023Renderer;
 import com.denek023.denek023.init.ModEntityTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

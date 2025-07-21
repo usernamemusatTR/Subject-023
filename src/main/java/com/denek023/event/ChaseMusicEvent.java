@@ -1,4 +1,4 @@
-package com.denek023.denek023.event;
+package com.denek023.event;
 
 import net.minecraftforge.eventbus.api.Event;
 

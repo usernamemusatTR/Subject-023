@@ -63,7 +63,7 @@ public class Denek023AttackerEntity extends Denek023Entity {
                 chaseTicks++;
                 if (chaseTicks >= 400) {
                     this.level().playSound(null, this.blockPosition(), ModSounds.DISCARDED.get(), SoundSource.HOSTILE, 4.0F, 1.0F);
-                    net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.denek023.denek023.event.ChaseMusicEvent(false));
+                    net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.denek023.event.ChaseMusicEvent(false));
                     this.discard();
                     return;
                 }
@@ -79,6 +79,11 @@ public class Denek023AttackerEntity extends Denek023Entity {
                 this.setTarget(null);
             }
         }
+    }
+
+    @Override
+    public boolean causeFallDamage(float fallDistance, float damageMultiplier, net.minecraft.world.damagesource.DamageSource source) {
+        return false;
     }
 
     private boolean canSeePlayer(net.minecraft.world.entity.player.Player player) {

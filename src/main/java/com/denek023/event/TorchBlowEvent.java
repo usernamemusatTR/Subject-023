@@ -11,6 +11,9 @@ import java.util.*;
 
 public class TorchBlowEvent {
     private static final Random random = new Random();
+    private static final double SPAWN_CHANCE = 0.005;
+    private static final int TICK_COOLDOWN = 800;
+    private static final Map<UUID, Integer> cooldowns = new HashMap<>();
     private static final Map<ServerLevel, Queue<BlockPos>> breakingQueue = new HashMap<>();
     private static final Map<ServerLevel, Integer> breakTickCounter = new HashMap<>();
 
@@ -19,8 +22,13 @@ public class TorchBlowEvent {
         Player player = event.player;
         if (player.level().isClientSide || event.phase != TickEvent.Phase.END) return;
         ServerLevel level = (ServerLevel) player.level();
-
-        if (random.nextDouble() < 0.0005) {
+        UUID playerUUID = player.getUUID();
+        int cooldown = cooldowns.getOrDefault(playerUUID, 0);
+        if (cooldown > 0) {
+            cooldowns.put(playerUUID, cooldown - 1);
+            return;
+        }
+        if (player.tickCount % TICK_COOLDOWN == 0 && random.nextDouble() < SPAWN_CHANCE) {
             List<BlockPos> torches = new ArrayList<>();
             BlockPos base = player.blockPosition();
             for (int x = -10; x <= 10; x++) {
@@ -51,7 +59,7 @@ public class TorchBlowEvent {
         if (queue == null || queue.isEmpty()) return;
 
         int tick = breakTickCounter.compute(level, (l, v) -> v == null ? 1 : v + 1);
-        if (tick >= 20) {
+        if (tick >= 40) {
             BlockPos pos = queue.poll();
             if (pos != null && (level.getBlockState(pos).is(Blocks.TORCH) || level.getBlockState(pos).is(Blocks.WALL_TORCH))) {
                 level.destroyBlock(pos, true);

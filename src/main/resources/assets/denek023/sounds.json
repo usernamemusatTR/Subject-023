@@ -156,5 +156,23 @@
         "stream": false
       }
     ]
+  },
+  "jumpscare2": {
+    "category":"master",
+    "sounds": [
+      {
+        "name": "denek023:jumpscare2",
+        "stream": false
+      }
+    ]
+  },
+  "creeper_tss": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "denek023:creeper_tss",
+        "stream": false
+      }
+    ]
   }
 }
