@@ -20,7 +20,6 @@ public class ModSounds {
         SOUND_EVENTS.register("discarded", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "discarded")));
     public static final RegistryObject<SoundEvent> SCREAM =
         SOUND_EVENTS.register("scream", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "scream")));
-        
     public static final RegistryObject<SoundEvent> CAVE_AMBIENT =
         SOUND_EVENTS.register("cave_ambient", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "cave_ambient")));
     public static final RegistryObject<SoundEvent> BREATHLEFT =
@@ -33,8 +32,14 @@ public class ModSounds {
             SOUND_EVENTS.register("creeper_tss", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "creeper_tss")));
     public static final RegistryObject<SoundEvent> HEARTBEAT =
             SOUND_EVENTS.register("heartbeat", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "heartbeat")));
-    
-        public static void register(IEventBus modEventBus) {
-            SOUND_EVENTS.register(modEventBus);
-        }
+    public static final RegistryObject<SoundEvent> REVERSEMUSICBOX =
+            SOUND_EVENTS.register("reversemusicbox", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "reversemusicbox")));
+    public static final RegistryObject<SoundEvent> WHISTLE =
+            SOUND_EVENTS.register("whistle", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "whistle")));
+    public static final RegistryObject<SoundEvent> CREEPY_WHISPER =
+            SOUND_EVENTS.register("creepy_whisper", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "creepy_whisper")));
+            
+    public static void register(IEventBus modEventBus) {
+        SOUND_EVENTS.register(modEventBus);
     }
+}

@@ -12,7 +12,7 @@ import java.util.*;
 public class FakeSystemMessageEvent {
     private static final Random random = new Random();
     private static final double SPAWN_CHANCE = 0.01;
-    private static final int TICK_COOLDOWN = 5000;
+    private static final int TICK_COOLDOWN = 8000;
     private static final Map<UUID, Integer> cooldowns = new HashMap<>();
 
     private static final List<String> FAKE_MC_ERROR_MESSAGES = Arrays.asList(

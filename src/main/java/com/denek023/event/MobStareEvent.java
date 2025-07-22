@@ -17,9 +17,9 @@ import java.util.*;
 
 @Mod.EventBusSubscriber(modid = "denek023")
 public class MobStareEvent {
-    private static final int STARE_RADIUS = 50;
+    private static final int STARE_RADIUS = 64;
     private static final int STARE_DURATION_TICKS = 20 * 15;
-    private static final double TRIGGER_CHANCE = 0.15;
+    private static final double TRIGGER_CHANCE = 0.015;
     private static final Map<UUID, Integer> staringTicks = new HashMap<>();
     private static final Map<Mob, LookAtPlayerGoal> activeGoals = new HashMap<>();
 
@@ -51,7 +51,8 @@ public class MobStareEvent {
 
         if (player.tickCount % 20 == 0 && level.random.nextDouble() < TRIGGER_CHANCE) {
             staringTicks.put(uuid, STARE_DURATION_TICKS);
-            level.playSound(null, player.blockPosition(), com.denek023.denek023.ModSounds.HEARTBEAT.get(), net.minecraft.sounds.SoundSource.PLAYERS, 1.0f, 1.0f);
+            level.playSound(null, player.blockPosition(), com.denek023.denek023.ModSounds.HEARTBEAT.get(), net.minecraft.sounds.SoundSource.PLAYERS, 4.0f, 1.0f);
+            level.playSound(null, player.blockPosition(), com.denek023.denek023.ModSounds.WHISTLE.get(), net.minecraft.sounds.SoundSource.PLAYERS, 4.0f, 1.0f);
             makeAllMobsStare(player, level);
         }
     }

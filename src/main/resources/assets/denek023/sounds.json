@@ -174,5 +174,32 @@
         "stream": false
       }
     ]
+  },
+  "reversemusicbox": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "denek023:reversemusicbox",
+        "stream": false
+      }
+    ]
+  },
+  "whistle": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "denek023:whistle",
+        "stream": false
+      }
+    ]
+  },
+  "creepy_whisper": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "denek023:creepy_whisper",
+        "stream": false
+      }
+    ]
   }
 }

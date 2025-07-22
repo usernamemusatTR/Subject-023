@@ -46,6 +46,8 @@ public class RandomSignEvent {
     private static final Random RANDOM = new Random();
     private static final ConcurrentHashMap<UUID, Integer> signCooldowns = new ConcurrentHashMap<>();
 
+    private static final int MIN_TICKS_BEFORE_SIGN = 1000;
+
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.player.level().isClientSide) return;
@@ -53,6 +55,11 @@ public class RandomSignEvent {
         try {
             ServerPlayer player = (ServerPlayer) event.player;
             UUID id = player.getUUID();
+
+            if (player.tickCount < MIN_TICKS_BEFORE_SIGN) {
+                return;
+            }
+
             int cooldown = signCooldowns.getOrDefault(id, 0);
             
             if (cooldown > 0) {
