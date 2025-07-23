@@ -2,7 +2,7 @@ package com.denek023.client;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
-
+import net.minecraft.client.Minecraft;
 import java.util.function.Supplier;
 
 public class JumpscarePacket {
@@ -17,8 +17,8 @@ public class JumpscarePacket {
 
     public static void handle(JumpscarePacket msg, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            JumpscareOverlay.showJumpscare = true;
-            JumpscareOverlay.jumpscareStartTime = System.currentTimeMillis();
+            Minecraft mc = Minecraft.getInstance();
+            mc.setScreen(new com.denek023.client.JumpscareScreen());
         });
         ctx.get().setPacketHandled(true);
     }

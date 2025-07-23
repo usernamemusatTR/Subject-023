@@ -23,10 +23,7 @@ public class LookAtPlayerGoal extends Goal {
     @Override
     public void tick() {
         if (targetPlayer != null) {
-            entity.getLookControl().setLookAt(targetPlayer, 60.0F, 60.0F);
+            entity.getLookControl().setLookAt(targetPlayer, 200.0F, 200.0F);
         }
     }
 }
-
-// In the Denek023Entity class, add the following line in the appropriate method (e.g., constructor or initGoals):
-// this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, 6.0F));

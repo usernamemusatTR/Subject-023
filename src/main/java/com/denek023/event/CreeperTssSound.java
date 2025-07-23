@@ -14,7 +14,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber
 public class CreeperTssSound {
     private static final HashMap<UUID, Integer> cooldowns = new HashMap<>();
-    private static final double SPAWN_CHANCE = 0.15;
+    private static final double SPAWN_CHANCE = 0.20;
     private static final int TICK_COOLDOWN = 800;
 
     @SubscribeEvent

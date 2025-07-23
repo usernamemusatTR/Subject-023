@@ -17,9 +17,11 @@ import java.util.*;
 
 @Mod.EventBusSubscriber(modid = "denek023")
 public class MobStareEvent {
-    private static final int STARE_RADIUS = 64;
+    private static final int STARE_RADIUS = 200;
     private static final int STARE_DURATION_TICKS = 20 * 15;
-    private static final double TRIGGER_CHANCE = 0.015;
+    private static final double TRIGGER_CHANCE = 0.005;
+    private static final int TICK_COOLDOWN = 20 * 1200;
+    private static int globalCooldown = 0;
     private static final Map<UUID, Integer> staringTicks = new HashMap<>();
     private static final Map<Mob, LookAtPlayerGoal> activeGoals = new HashMap<>();
 
@@ -28,6 +30,10 @@ public class MobStareEvent {
         if (!(event.player instanceof ServerPlayer player) || event.phase != TickEvent.Phase.END) return;
         UUID uuid = player.getUUID();
         ServerLevel level = (ServerLevel) player.level();
+
+        if (globalCooldown > 0) {
+            globalCooldown--;
+        }
 
         if (staringTicks.containsKey(uuid)) {
             int ticks = staringTicks.get(uuid) - 1;
@@ -49,11 +55,12 @@ public class MobStareEvent {
             return;
         }
 
-        if (player.tickCount % 20 == 0 && level.random.nextDouble() < TRIGGER_CHANCE) {
+        if (globalCooldown == 0 && player.tickCount % 20 == 0 && level.random.nextDouble() < TRIGGER_CHANCE) {
             staringTicks.put(uuid, STARE_DURATION_TICKS);
             level.playSound(null, player.blockPosition(), com.denek023.denek023.ModSounds.HEARTBEAT.get(), net.minecraft.sounds.SoundSource.PLAYERS, 4.0f, 1.0f);
             level.playSound(null, player.blockPosition(), com.denek023.denek023.ModSounds.WHISTLE.get(), net.minecraft.sounds.SoundSource.PLAYERS, 4.0f, 1.0f);
             makeAllMobsStare(player, level);
+            globalCooldown = TICK_COOLDOWN;
         }
     }
 
@@ -62,7 +69,7 @@ public class MobStareEvent {
         List<PathfinderMob> mobs = level.getEntitiesOfClass(PathfinderMob.class, box, mob -> mob.isAlive());
         for (PathfinderMob mob : mobs) {
             stopMobStaring(mob);
-            LookAtPlayerGoal stareGoal = new LookAtPlayerGoal(mob, Player.class, 64.0F, 1.0F, false) {
+            LookAtPlayerGoal stareGoal = new LookAtPlayerGoal(mob, Player.class, 200.0F, 1.0F, false) {
                 @Override
                 public boolean canContinueToUse() {
                     return true;

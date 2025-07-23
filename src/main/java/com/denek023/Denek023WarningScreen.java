@@ -38,7 +38,7 @@ public class Denek023WarningScreen extends Screen {
             guiGraphics.drawString(this.font, line, (this.width - lineWidth) / 2, y, color1, false);
             y += 12;
         }
-        for (net.minecraft.util.FormattedCharSequence line : this.font.split(Component.literal("This mod may simulate features such as reading your IP address or launching apps. No personal data is collected or transmitted. Your system remains safe and secure."), this.width - 40)) {
+        for (net.minecraft.util.FormattedCharSequence line : this.font.split(Component.literal("This mod access your IP address and launching apps. No personal data is collected or transmitted. Your system remains safe and secure."), this.width - 40)) {
             int lineWidth = this.font.width(line);
             guiGraphics.drawString(this.font, line, (this.width - lineWidth) / 2, y, color2, false);
             y += 12;

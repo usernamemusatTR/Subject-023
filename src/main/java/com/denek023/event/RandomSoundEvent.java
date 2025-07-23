@@ -11,7 +11,7 @@ import java.util.*;
 @Mod.EventBusSubscriber(modid = "denek023")
 public class RandomSoundEvent {
     private static final int TICK_COOLDOWN = 20 * 30;
-    private static final double TRIGGER_CHANCE = 0.035;
+    private static final double TRIGGER_CHANCE = 0.005;
     private static final Map<UUID, Integer> cooldowns = new HashMap<>();
 
     private static final List<net.minecraftforge.registries.RegistryObject<SoundEvent>> SOUNDS = List.of(

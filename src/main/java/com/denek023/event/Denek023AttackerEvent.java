@@ -22,9 +22,9 @@ import java.util.List;
 import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Denek023.MODID)
-public class Denek023JumpscareEvent {
+public class Denek023AttackerEvent {
     private static Denek023AttackerEntity attacker = null;
-    private static final double SPAWN_CHANCE_PER_TICK = 1.0 / 4800.0;
+    private static final double SPAWN_CHANCE_PER_TICK = 1.0 / 1000.0;
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -35,7 +35,7 @@ public class Denek023JumpscareEvent {
         Player player = event.player;
         Level level = player.level();
 
-        if (player.getY() > 0 || player.getY() < -55) {
+        if (player.getY() > 25 || player.getY() < -55) {
             if (attacker != null) {
                 attacker.discard();
                 attacker = null;
@@ -56,7 +56,9 @@ public class Denek023JumpscareEvent {
                     attacker.resetChaseTicks();
                     level.playSound(null, attacker.blockPosition(), ModSounds.CHASE.get(), SoundSource.HOSTILE, 5.0F, 1.0F);
                     level.playSound(null, player.blockPosition(), ModSounds.SCREAM.get(), SoundSource.HOSTILE, 5.0f, 1.0f);
-                    MinecraftForge.EVENT_BUS.post(new ChaseMusicEvent(true));
+                    if (!level.isClientSide) {
+                        MinecraftForge.EVENT_BUS.post(new com.denek023.event.ChaseMusicEvent(true));
+                    }
                 }
             }
         } else {

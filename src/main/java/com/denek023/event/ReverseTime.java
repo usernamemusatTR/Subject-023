@@ -17,7 +17,7 @@ public class ReverseTime {
     private static final int MAX_TICKS = 400;
     private static final Map<UUID, Deque<ReverseTimeState>> stateHistory = new HashMap<>();
     private static final int TICK_COOLDOWN = 1000;
-    private static final double SPAWN_CHANCE = 0.25;
+    private static final double SPAWN_CHANCE = 0.15;
     private static int tickCounter = 0;
     private static final Random random = new Random();
 

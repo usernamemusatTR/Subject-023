@@ -18,14 +18,27 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.damagesource.DamageSource;
+import com.denek023.denek023.entity.DoorHelper;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+
 public class Denek023AttackerEntity extends Denek023Entity {
+
+
+    private boolean hasJumpscared = false;
     public int chaseTicks = 0;
     public int waitForChaseTicks = 0;
 
     public Denek023AttackerEntity(EntityType<? extends Denek023Entity> type, Level level) {
         super(type, level);
+    }
+
+    public void startChase() {
+        this.getPersistentData().putBoolean("chaseStarted", true);
+        this.chaseTicks = 0;
+        this.waitForChaseTicks = 0;
     }
 
     @Override
@@ -41,17 +54,14 @@ public class Denek023AttackerEntity extends Denek023Entity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (source.getEntity() instanceof net.minecraft.world.entity.player.Player) {
-            return false;
-        }
         return super.hurt(source, amount);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 40.0D)
-            .add(Attributes.ATTACK_DAMAGE, 10.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.5D);
+            .add(Attributes.MAX_HEALTH, 70.0D)
+            .add(Attributes.ATTACK_DAMAGE, 4.0D)
+            .add(Attributes.MOVEMENT_SPEED, 0.42D);
     }
 
     @Override
@@ -67,6 +77,12 @@ public class Denek023AttackerEntity extends Denek023Entity {
                     this.discard();
                     return;
                 }
+                if (this.getTarget() == null || !this.getTarget().isAlive()) {
+                    this.level().playSound(null, this.blockPosition(), ModSounds.DISCARDED.get(), SoundSource.HOSTILE, 4.0F, 1.0F);
+                    net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.denek023.event.ChaseMusicEvent(false));
+                    this.discard();
+                    return;
+                }
             } else {
                 waitForChaseTicks++;
                 if (waitForChaseTicks >= 400) {
@@ -74,9 +90,16 @@ public class Denek023AttackerEntity extends Denek023Entity {
                     return;
                 }
             }
-
-            if (this.getTarget() != null && !this.getTarget().isAlive()) {
-                this.setTarget(null);
+        }
+        if (!this.level().isClientSide && this.getTarget() != null && this.getTarget().isAlive()) {
+            Vec3 look = this.getLookAngle().normalize();
+            BlockPos base = BlockPos.containing(this.getX(), this.getY(), this.getZ());
+            Level level = this.level();
+            for (int dx = -1; dx <= 1; dx++) {
+                for (int dz = -1; dz <= 1; dz++) {
+                    BlockPos check = base.offset(dx + (int)Math.round(look.x), 0, dz + (int)Math.round(look.z));
+                    DoorHelper.tryOpenDoor(level, check);
+                }
             }
         }
     }

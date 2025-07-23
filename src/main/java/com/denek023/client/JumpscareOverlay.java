@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 public class JumpscareOverlay {
     public static boolean showJumpscare = false;
     public static long jumpscareStartTime = 0;
-    private static final long DURATION = 4000;
+    private static final long DURATION = 3000;
 
     @SubscribeEvent
     public static void onRenderOverlay(RenderGuiOverlayEvent.Post event) {

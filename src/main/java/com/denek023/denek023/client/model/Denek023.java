@@ -67,7 +67,8 @@ public class Denek023<T extends Denek023Entity> extends EntityModel<T> {
         this.Head.yRot = netHeadYaw * ((float)Math.PI / 180F);
         this.Head.xRot = headPitch * ((float)Math.PI / 180F);
 
-        // Basit yürüme animasyonu (bacaklar ve kollar)
+        // Sadece normal yürüme animasyonu
+        this.Body.xRot = 0F;
         this.RightLeg.xRot = (float) Math.cos(limbSwing) * 1.4F * limbSwingAmount;
         this.LeftLeg.xRot = (float) Math.cos(limbSwing + Math.PI) * 1.4F * limbSwingAmount;
         this.RightArm.xRot = (float) Math.cos(limbSwing + Math.PI) * 1.4F * limbSwingAmount;
