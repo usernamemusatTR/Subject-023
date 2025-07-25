@@ -11,7 +11,7 @@ import java.util.*;
 @Mod.EventBusSubscriber(modid = "denek023", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class FakeSystemMessageEvent {
     private static final Random random = new Random();
-    private static final double SPAWN_CHANCE = 0.01;
+    private static final double SPAWN_CHANCE = 0.005;
     private static final int TICK_COOLDOWN = 8000;
     private static final Map<UUID, Integer> cooldowns = new HashMap<>();
 
@@ -24,10 +24,7 @@ public class FakeSystemMessageEvent {
             "§eOpenGL Error:§f 1285 (Out of memory)",
             "§eOpenGL Error:§f 1286 (Invalid framebuffer operation)",
             "§eOpenGL Error:§f 1287 (Context lost)",
-            "§eOpenGL Error:§f 1288 (Table too large)",
-            "§eOpenGL Warning:§f Shaders not supported on your graphics card.",
-            "§eOpenGL Warning:§f Display mode not accelerated.",
-            "§eOpenGL Warning:§f FBOs are not supported, rendering may be slow."
+            "§eOpenGL Error:§f 1288 (Table too large)"
     );
 
     @SubscribeEvent

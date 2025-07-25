@@ -71,6 +71,47 @@
       }
     ]
   },
+  "cave_ambient": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "denek023:cave1",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave2",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave3",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave4",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave5",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave6",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave7",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave8",
+        "stream": false
+      },
+      {
+        "name": "denek023:cave9",
+        "stream": false
+      }
+    ]
+  },
   "scream": {
     "category": "player",
     "sounds": [
@@ -157,6 +198,24 @@
     "sounds": [
       {
         "name": "denek023:creepy_whisper",
+        "stream": false
+      }
+    ]
+  },
+  "comecloser": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "denek023:comecloser",
+        "stream": false
+      }
+    ]
+  },
+  "scream2": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "denek023:scream2",
         "stream": false
       }
     ]

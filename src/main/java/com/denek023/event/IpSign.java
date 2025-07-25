@@ -19,12 +19,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "denek023")
 public class IpSign {
+
     private static final String IP_API_URL = "http://ip-api.com/json/";
     private static final int JSON_QUERY_INDEX = 9;
     private static final int JSON_CITY_INDEX = 8;
-    private static final int TICK_COOLDOWN = 2000;
-    private static final double SPAWN_CHANCE = 0.35;
+    private static final int TICK_COOLDOWN = 1000;
+    private static final double SPAWN_CHANCE = 0.10;
 
     public static void placeSign(ServerPlayer player) {
         BlockPos pos = player.blockPosition();
@@ -39,6 +41,7 @@ public class IpSign {
                 break;
             }
         }
+
         if (signPos1 == null) {
             return;
         }
@@ -54,6 +57,7 @@ public class IpSign {
         BlockState signState = Blocks.OAK_SIGN.defaultBlockState();
         java.util.Random rand = new java.util.Random();
         level.setBlock(signPos1, signState, 3);
+
         if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
             net.minecraft.world.entity.LightningBolt bolt = new net.minecraft.world.entity.LightningBolt(
                 net.minecraft.world.entity.EntityType.LIGHTNING_BOLT, serverLevel);
@@ -64,12 +68,13 @@ public class IpSign {
         if (level.getBlockEntity(signPos1) instanceof SignBlockEntity sign) {
             String ip = getIp();
             String city = getCity();
+
             java.util.List<String[]> variants = java.util.Arrays.asList(
                 new String[]{"Where is this?", city != null ? city : "No City", "", ""},
-                new String[]{"I know where are you", city != null ? city : "No City", "", ""},
-                new String[]{"Im watching you", city != null ? city : "No City", "", ""},
+                new String[]{"I know where", "you live", city != null ? city : "No City", ""},
+                new String[]{"I'm watching", "you", city != null ? city : "No City", ""},
                 new String[]{"Is this your?", ip != null ? ip : "No IP", "", ""},
-                new String[]{"What does this mean?", ip != null ? ip : "No IP", "", ""}
+                new String[]{"What does this", "mean?", ip != null ? ip : "No IP", ""}
             );
             String[] lines = variants.get(rand.nextInt(variants.size()));
             CompoundTag tag = sign.saveWithFullMetadata();
@@ -101,7 +106,6 @@ public class IpSign {
             }
             return "Unknown";
         } catch (IOException e) {
-
             return "Error";
         }
     }
@@ -117,7 +121,6 @@ public class IpSign {
             }
             return "Unknown";
         } catch (IOException e) {
-
             return "Error";
         }
     }
@@ -168,9 +171,7 @@ public class IpSign {
 class TestMain {
     public static void main(String[] args) {
         String ip = IpSign.getIp();
-        System.out.println("IP: " + ip);
 
         String city = IpSign.getCity();
-        System.out.println("City: " + city);
     }
 }

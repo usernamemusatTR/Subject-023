@@ -25,6 +25,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 
 public class Denek023AttackerEntity extends Denek023Entity {
+    private String jumpscareType = "cave"; // default
+    public void setJumpscareType(String type) { this.jumpscareType = type; }
+    public String getJumpscareType() { return this.jumpscareType; }
 
 
     private boolean hasJumpscared = false;
@@ -60,7 +63,7 @@ public class Denek023AttackerEntity extends Denek023Entity {
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
             .add(Attributes.MAX_HEALTH, 70.0D)
-            .add(Attributes.ATTACK_DAMAGE, 4.0D)
+            .add(Attributes.ATTACK_DAMAGE, 6.0D)
             .add(Attributes.MOVEMENT_SPEED, 0.42D);
     }
 

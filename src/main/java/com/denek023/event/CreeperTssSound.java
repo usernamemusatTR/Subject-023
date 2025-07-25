@@ -14,7 +14,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber
 public class CreeperTssSound {
     private static final HashMap<UUID, Integer> cooldowns = new HashMap<>();
-    private static final double SPAWN_CHANCE = 0.20;
+    private static final double SPAWN_CHANCE = 0.25;
     private static final int TICK_COOLDOWN = 800;
 
     @SubscribeEvent
@@ -34,7 +34,7 @@ public class CreeperTssSound {
         if (player.tickCount % TICK_COOLDOWN == 0 && player.level().random.nextDouble() < SPAWN_CHANCE) {
             if (new Random().nextDouble() < 0.001) {
                 cooldowns.put(playerUUID, 20 * 180);
-                player.level().playSound(null, player.blockPosition(), ModSounds.CREEPER_TSS.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+                player.level().playSound(null, player.blockPosition(), ModSounds.CREEPERTSS.get(), SoundSource.PLAYERS, 4.0f, 1.0f);
             }
         }
     }

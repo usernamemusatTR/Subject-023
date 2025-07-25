@@ -28,16 +28,22 @@ public class ModSounds {
         SOUND_EVENTS.register("breathright", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "breathright")));
     public static final RegistryObject<SoundEvent> FAKEWALK =
             SOUND_EVENTS.register("fakewalk", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "fakewalk")));
-    public static final RegistryObject<SoundEvent> CREEPER_TSS =
-            SOUND_EVENTS.register("creeper_tss", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "creeper_tss")));
+    public static final RegistryObject<SoundEvent> CREEPERTSS =
+            SOUND_EVENTS.register("creepertss", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "creepertss")));
     public static final RegistryObject<SoundEvent> HEARTBEAT =
             SOUND_EVENTS.register("heartbeat", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "heartbeat")));
     public static final RegistryObject<SoundEvent> REVERSEMUSICBOX =
             SOUND_EVENTS.register("reversemusicbox", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "reversemusicbox")));
+    public static final RegistryObject<SoundEvent> CREEPY_WHISPER =
+            SOUND_EVENTS.register("creepy_whsiper", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "creepy_whisper")));
     public static final RegistryObject<SoundEvent> WHISTLE =
             SOUND_EVENTS.register("whistle", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "whistle")));
-    public static final RegistryObject<SoundEvent> CREEPY_WHISPER =
-            SOUND_EVENTS.register("creepy_whisper", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "creepy_whisper")));
+    public static final RegistryObject<SoundEvent> SCREAM2 =
+            SOUND_EVENTS.register("scream2", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "scream2")));
+    public static final RegistryObject<SoundEvent> JUMPSCARE2 =
+            SOUND_EVENTS.register("jumpscare2", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "jumpscare2")));
+    public static final RegistryObject<SoundEvent> COMECLOSER =
+            SOUND_EVENTS.register("comecloser", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("denek023", "comecloser")));
             
     public static void register(IEventBus modEventBus) {
         SOUND_EVENTS.register(modEventBus);

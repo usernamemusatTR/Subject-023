@@ -105,7 +105,11 @@ public class ChaseAndAttackPlayerGoal extends Goal {
                 attackCooldown = 10;
                 if (didAttack && !mob.getPersistentData().getBoolean("jumpscareDone")) {
                     if (target instanceof ServerPlayer player && !target.isAlive()) {
-                        mob.level().playSound(null, mob.blockPosition(), ModSounds.JUMPSCARE.get(), SoundSource.HOSTILE, 4.0F, 1.0F);
+                        if (mob.getJumpscareType().equals("attacker")) {
+                            mob.level().playSound(null, mob.blockPosition(), ModSounds.JUMPSCARE2.get(), SoundSource.HOSTILE, 4.0F, 1.0F);
+                        } else {
+                            mob.level().playSound(null, mob.blockPosition(), ModSounds.JUMPSCARE.get(), SoundSource.HOSTILE, 4.0F, 1.0F);
+                        }
                         player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 0));
                         com.denek023.denek023.Denek023.CHANNEL.send(
                             net.minecraftforge.network.PacketDistributor.PLAYER.with(() -> player),

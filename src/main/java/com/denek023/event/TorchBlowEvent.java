@@ -11,8 +11,8 @@ import java.util.*;
 
 public class TorchBlowEvent {
     private static final Random random = new Random();
-    private static final double SPAWN_CHANCE = 0.005;
-    private static final int TICK_COOLDOWN = 800;
+    private static final double SPAWN_CHANCE = 0.05;
+    private static final int TICK_COOLDOWN = 8000;
     private static final Map<UUID, Integer> cooldowns = new HashMap<>();
     private static final Map<ServerLevel, Queue<BlockPos>> breakingQueue = new HashMap<>();
     private static final Map<ServerLevel, Integer> breakTickCounter = new HashMap<>();

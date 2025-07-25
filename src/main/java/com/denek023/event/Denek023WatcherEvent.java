@@ -17,7 +17,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = Denek023.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Denek023WatcherEvent {
     private static final int TICK_COOLDOWN = 800;
-    private static final double SPAWN_CHANCE = 0.15;
+    private static final double SPAWN_CHANCE = 0.20;
     private static final HashMap<UUID, Integer> cooldowns = new HashMap<>();
 
     @SubscribeEvent
