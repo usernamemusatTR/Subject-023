@@ -24,7 +24,7 @@ import java.util.Random;
 @Mod.EventBusSubscriber(modid = Denek023.MODID)
 public class Denek023CaveAttackerEvent {
     private static Denek023AttackerEntity attacker = null;
-    private static final double SPAWN_CHANCE_PER_TICK = 1.0 / 2400.0;
+    private static final double SPAWN_CHANCE_PER_TICK = 1.0 / 4500.0;
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {

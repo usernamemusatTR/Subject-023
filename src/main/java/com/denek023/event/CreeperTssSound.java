@@ -31,11 +31,9 @@ public class CreeperTssSound {
             cooldowns.put(playerUUID, cooldown - 1);
             return;
         }
-        if (player.tickCount % TICK_COOLDOWN == 0 && player.level().random.nextDouble() < SPAWN_CHANCE) {
-            if (new Random().nextDouble() < 0.001) {
-                cooldowns.put(playerUUID, 20 * 180);
-                player.level().playSound(null, player.blockPosition(), ModSounds.CREEPERTSS.get(), SoundSource.PLAYERS, 4.0f, 1.0f);
-            }
-        }
+        if (player.tickCount % TICK_COOLDOWN == 0 && player.level().random.nextDouble() < 0.05) {
+    cooldowns.put(playerUUID, 20 * 180);
+    player.level().playSound(null, player.blockPosition(), ModSounds.CREEPERTSS.get(), SoundSource.PLAYERS, 5.0f, 1.0f);
+}
     }
 }

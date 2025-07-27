@@ -19,7 +19,7 @@ import java.util.Random;
 public class Denek023AttackerEvent {
     private static Denek023AttackerEntity attacker = null;
 
-    private static final double SPAWN_CHANCE_PER_TICK = 1.0 / 2000.0;
+    private static final double SPAWN_CHANCE_PER_TICK = 1.0 / 4000.0;
     private static final int MIN_DIST = 20;
     private static final int MAX_DIST = 35;
 
